@@ -54,6 +54,10 @@ spec:
           name: temp-vol
         resources:
 {{ toYaml .Values.resources | indent 10 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       volumes:
       - name: temp-vol
         emptyDir: {}
